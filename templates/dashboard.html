@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | نظام CRM الاحترافي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(71, 85, 105, 0.4);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --primary-hover: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --input-bg: #0b0f19;
+            --input-border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(17, 24, 39, 0.5) 0px, transparent 50%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .auth-container {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 45px 40px;
+            max-width: 620px;
+            width: 100%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: right;
+        }
+
+        .auth-container:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .brand-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: var(--primary-gradient);
+            color: #ffffff;
+            font-size: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.25);
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.25); }
+            50% { transform: scale(1.03); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.45); }
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .user-info-box {
+            background-color: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .user-info-item span {
+            color: var(--text-secondary);
+            font-size: 13px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .user-info-item strong {
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+
+        .role-box {
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+
+        .role-box h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .role-box p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .btn-manage-users {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-manage-users:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+        }
+
+        .footer-links {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(71, 85, 105, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+        }
+
+        .footer-links a {
+            color: #f87171;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-links a:hover {
+            color: #ef4444;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="brand-icon">
+            <i class="fa-solid fa-gauge-high"></i>
+        </div>
+
+        <h2>لوحة التحكم</h2>
+        <p class="subtitle">مرحباً بك، لوحة متابعة الحساب والمهام الشخصية</p>
+
+        <!-- معلومات المستخدم -->
+        <div class="user-info-box">
+            <div class="user-info-item">
+                <span>البريد الإلكتروني</span>
+                <strong>{{ user.email }}</strong>
+            </div>
+            <div class="user-info-item">
+                <span>الدور الوظيفي</span>
+                <strong style="color: #60a5fa;">{{ user.role_display }}</strong>
+            </div>
+        </div>
+
+        <!-- فحص الصلاحيات -->
+        {% if user.is_superuser or user.role.name|lower == "admin" or user.role_display|lower == "admin" or "مدير" in user.role_display %}
+            <div class="role-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                <h3 style="color: #f87171;"><i class="fa-solid fa-shield-halved"></i> صلاحيات المدير:</h3>
+                <p>لديك الصلاحيات الكاملة لمتابعة النظام، إدارة الحسابات والاطلاع على كافة بيانات العملاء.</p>
+
+                <!-- زر الانتقال لصفحة إدارة المستخدمين -->
+                <a href="{% url 'manage_users' %}" class="btn-manage-users">
+                    <i class="fa-solid fa-users-gear"></i> إدارة المستخدمين والصلاحيات
+                </a>
+            </div>
+        {% elif user.role.name|lower == "sales" or "مبيعات" in user.role_display %}
+            <div class="role-box" style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3);">
+                <h3 style="color: #4ade80;"><i class="fa-solid fa-chart-line"></i> صلاحيات المبيعات:</h3>
+                <p>يمكنك إدارة العملاء، متابعة الصفقات التجارية، وتسجيل حركة المبيعات بكل سهولة.</p>
+            </div>
+        {% elif user.role.name|lower == "support" or "دعم" in user.role_display %}
+            <div class="role-box" style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3);">
+                <h3 style="color: #22d3ee;"><i class="fa-solid fa-headset"></i> صلاحيات الدعم:</h3>
+                <p>مخصص للرد على استفسارات العملاء، متابعة التذاكر الفنية وحل المشكلات.</p>
+            </div>
+        {% else %}
+            <div class="role-box" style="background: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.3);">
+                <p style="color: #facc15;"><i class="fa-solid fa-triangle-exclamation"></i> حسابك نشط وجاهز للاستخدام داخل النظام.</p>
+            </div>
+        {% endif %}
+
+        <div class="footer-links">
+            <a href="{% url 'logout' %}">
+                <i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج من النظام
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

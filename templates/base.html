@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}نظام CRM{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://jsdelivr.net">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        .main-navbar {
+            background-color: #1e293b;
+            padding: 15px 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .navbar-brand-custom {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .navbar-brand-custom:hover { color: #cbd5e1; }
+
+        .auth-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 35px;
+            margin-top: 50px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .crm-table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        {% block extra_css %}{% endblock %}
+    </style>
+</head>
+<body>
+
+    <nav class="main-navbar d-flex align-items-center justify-content-between">
+        <a class="navbar-brand-custom" href="/">📊 نظام إدارة العملاء CRM</a>
+
+        <div class="user-actions d-flex align-items-center">
+            {% if user.is_authenticated %}
+                <span class="text-light me-3 small">
+                    👤 مرحباً، <strong>{{ user.full_name }}</strong>
+                    <span class="badge bg-secondary ms-1">{{ user.role_display }}</span>
+                </span>
+                <a class="btn btn-sm btn-danger px-3" href="{% url 'logout' %}">تسجيل الخروج</a>
+            {% else %}
+                <a class="btn btn-sm btn-outline-light me-2 px-3" href="{% url 'login' %}">الدخول</a>
+                <a class="btn btn-sm btn-primary px-3" href="{% url 'register' %}">إنشاء حساب</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <script src="https://jsdelivr.net"></script>
+</body>
+</html>
